@@ -5,10 +5,8 @@
 * License: https://bootstrapmade.com/license/
 */
 
+$('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
 
-function op(){
-  console.log("kjjbcrj");
-}
 
 function showpass() {
   var x = document.getElementById("pswd");

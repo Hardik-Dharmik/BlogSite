@@ -44,9 +44,12 @@ def write(request):
 
 
 def viewblog(request, slug):
+    flag=True
     post = Post.objects.filter(slug=slug).first()
     comments=Comments.objects.filter(post=post)
-    return render(request, 'blogpost.html', {'post': post,'comments':comments})
+    if  post.author!=str(request.user):
+        flag=False
+    return render(request, 'blogpost.html', {'post': post,'comments':comments,'flag':flag})
 
 
 def showmyblog(request):
@@ -71,22 +74,8 @@ def write_comment(request):
 def edit(request):
     if request.method=='POST':
         slug=request.POST.get('slug')
-        print("Slug inside edit:",slug)
         content=request.POST.get('content')
-        
-        # print(content)
-        # post=Post.objects.filter(slug=slug)[0]
-        # print(slug)
-        # title=post.title
-        # author=post.author
-        # post.delete()
-        # newpost = Post(author=author, title=title, slug=slug, content=content)
-        # newpost.save()
-        # return redirect("BlogHome")
-        
         return render(request,'editblog.html',{'content':content,'slug':slug})
-
-
     return render(request,'editblog.html',{'content':content,'slug':slug})
 
 
@@ -103,3 +92,19 @@ def editblog(request):
         return redirect("BlogHome")
     else:
         return HttpResponse("Please follow protocol")
+
+def delete(request):
+    if request.method=='POST':
+        slug=request.POST.get('slug')
+        title=request.POST.get('title')
+    return render(request,'delete.html',{'slug':slug,'title':title})
+
+def deleteblog(request):
+    if request.method=='POST':
+        slug=request.POST.get('slug')
+        post=Post.objects.filter(slug=slug)[0]
+        post.delete()
+        messages.success(request,"Post Deleted Successfully.")
+        return redirect("BlogHome")
+    else:
+        return HttpResponse("Bad Pathway")

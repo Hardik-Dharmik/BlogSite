@@ -52,9 +52,10 @@
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
           {% if user.is_authenticated %}
-            <div class="dropdown  " style="margin-left: 30px;">
+            <div class="dropdown" style="margin-left: 30px;">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{% static 'assets/img/profile.png' %}" width="20" height="20"></img>  {{request.user}}
+                <img src="{% static 'assets/img/profile.png' %}" width="20" height="20"></img>
+                  {{request.user}}
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
@@ -92,7 +93,7 @@
       <div class="credits">
         Created by <a>Mayur and Hardik</a>
         <div class="copyright">
-          &copy; Copyright <strong><span>BlogSite</span></strong>. All Rights Reserved
+          Made with ❤️ in <strong>India</strong>
         </div>
       </div>
     </div>
