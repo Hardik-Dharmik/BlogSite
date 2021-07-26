@@ -94,13 +94,13 @@
 
       <div class="container">
         {% if user.is_authenticated %}
-          <form method="post" action="/blog/writeblog/">{% csrf_token %}
-          <input type="hidden" name="slug" value="{{post.slug}}">
+          <form method="post" action="/blog/editblog/">{% csrf_token %}
+          <input type="hidden" name="slug" value="{{slug}}">
           <h2>Title</h2>
           <input type="text" placeholder="Title of your blog" style="margin-bottom:30px; width: 500px;" name="title">
           <h3>Content</h3>
           <textarea id="mytextarea" name="content" style="height:500px;"
-            placeholder="{{content}}">{{content | safe}}</textarea>
+            placeholder="Content here">{{content | safe}}</textarea>
           <button type="submit">Post</button>
         </form>
 

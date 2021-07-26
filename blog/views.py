@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
 from .models import Post,Comments
 from django.contrib import messages
 import random
 
+slug=0
 
 def index(request):
     if request.method == 'POST':
@@ -29,6 +30,7 @@ def write(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         slug = str(random.randint(100, 1000000))
+        print("Slug inside write:",slug)
         content = request.POST.get('content')
         author = request.user.username
         post = Post(author=author, title=title, slug=slug, content=content)
@@ -36,6 +38,8 @@ def write(request):
         messages.success(request, "Blog posted successfully.")
         return redirect("BlogHome")
     else:
+        # posts=Post.objects.all()
+        # if len()
         return render(request, 'writeblog.html')
 
 
@@ -63,3 +67,39 @@ def write_comment(request):
         messages.success(request,"Comment posted successfully")
         return render(request, 'blogpost.html', {'post': post,'comments':comments})
     return render(request,"/")
+
+def edit(request):
+    if request.method=='POST':
+        slug=request.POST.get('slug')
+        print("Slug inside edit:",slug)
+        content=request.POST.get('content')
+        
+        # print(content)
+        # post=Post.objects.filter(slug=slug)[0]
+        # print(slug)
+        # title=post.title
+        # author=post.author
+        # post.delete()
+        # newpost = Post(author=author, title=title, slug=slug, content=content)
+        # newpost.save()
+        # return redirect("BlogHome")
+        
+        return render(request,'editblog.html',{'content':content,'slug':slug})
+
+
+    return render(request,'editblog.html',{'content':content,'slug':slug})
+
+
+def editblog(request):
+    if request.method=='POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        author = request.user.username
+        slug=request.POST.get('slug')
+        print("SLug inside editblog:",slug)
+        post=Post.objects.filter(slug=slug)[0]
+        post.content=content
+        post.save()
+        return redirect("BlogHome")
+    else:
+        return HttpResponse("Please follow protocol")

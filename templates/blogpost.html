@@ -5,11 +5,25 @@
 <main id="main">
     <section>
         <div class="container2">
-        <a href="#">Edit</a>
+            
             <h2>{{post.title}}</h2>
             <h3>{{post.author}}</h3>
             <h3>{{post.timestamp}}</h3>
             <p>{{post.content | safe}}</p>
+            
+            {% comment %} {% if user == post.author %} {% endcomment %}
+            {% if user.is_authenticated %}
+            {% comment %} {% if user == post.author %} {% endcomment %}
+                <form action="/blog/edit/" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="slug" value="{{post.slug}}">
+                    <input type="hidden" name="content" value="{{post.content}}">
+                    <input type="hidden" name="title" value="{{post.title}}">
+                    <button type="submit">Edit</button>
+                </form>
+                {% comment %} {% endif %} {% endcomment %}
+                <p>{{user}}</p>
+            {% endif %}
             <br>
         </div>
 
