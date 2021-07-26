@@ -5,7 +5,7 @@
 * License: https://bootstrapmade.com/license/
 */
 
-$('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
+
 
 
 function showpass() {
