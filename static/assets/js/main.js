@@ -5,8 +5,17 @@
 * License: https://bootstrapmade.com/license/
 */
 
-
-
+function val_pass(){
+  var x=document.signupform.password.value;
+  if(x==null || x==" "){
+    alert("Password can't be null.");
+    return false;
+  }
+  if(x.length<6){
+    alert("Password must be atleast 6 characters long.");
+    return false;
+  }
+}
 
 function showpass() {
   var x = document.getElementById("pswd");

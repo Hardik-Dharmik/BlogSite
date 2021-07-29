@@ -10,14 +10,16 @@
             <div class="contentbx" data-aos="fade-up">
                     <div class="formbx">
                     <h2>Signin </h2><br>
-                   <form action="/sendcode/" method="post">{% csrf_token %}
+                   <form action="/sendcode/" method="post" name="signupform" onsubmit="return val_pass()">{% csrf_token %}
                     
                     <div class="inputbx"><input type="text" placeholder="First Name" id="fname" name="fname"></div>
                     <div class="inputbx"><input type="text" placeholder="Last Name" id="lname" name="lname"></div>
                     <div class="inputbx"><input type="email" placeholder="Email ID" id="email" name="email"></div>
                     <div class="inputbx"><input type="text" placeholder="Username" id="user" name="user"></div>
-                    <div class="inputbx"><input type="password" placeholder="Password" id="pswd" name="password"></div>
-
+                    <div class="inputbx"><input type="password" placeholder="Password" id="pswd" name="password" ></div>
+                    
+                    <div class="inputbx show"><input type="checkbox"  onclick="showpass()">Show Password
+                    </div>
                     <div class="inputbx">
                         <input type="submit" value="Signin">
                       </div>
