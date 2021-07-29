@@ -164,6 +164,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #34b7a7;
 }
 
+.dropdown-backdrop {
+  position: static;
+}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -250,7 +253,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul a {
-  padding: 10px 20px;
+  padding: 10px 30px;
   font-size: 15px;
   text-transform: none;
   font-weight: 600;
@@ -1298,7 +1301,8 @@ section {
   position: absolute;
   width: 100%;
   margin-top: auto;
-  height: 30px;
+  /* height: 100%; */
+  
 }
 
 #footer .credits {

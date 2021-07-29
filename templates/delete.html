@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Blog Home{% endblock title %}
+{% block body %}
+<main id="main">
+    <section>
+        <h3>Are you sure you want to delete this blog?</h3>
+        <form action="/blog/deleteblog/" method="post">{% csrf_token %}
+        <input type="hidden" name="slug" value="{{slug}}">
+        <input type="hidden" name="title" value="{{title}}">
+        <button type="submit">Yes</button>
+        </form>
+        <a href="/blog/">No</a>
+    </section>
+</main>
+
+{% endblock body %}

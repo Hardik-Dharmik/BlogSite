@@ -2,14 +2,36 @@
 {% load static %}
 {% block title %}Blog Home{% endblock title %}
 {% block body %}
-<main id="main">
+<main id="main" data-aos="fade-up">
     <section>
         <div class="container2">
-        <a href="#">Edit</a>
+            
             <h2>{{post.title}}</h2>
             <h3>{{post.author}}</h3>
             <h3>{{post.timestamp}}</h3>
             <p>{{post.content | safe}}</p>
+            
+            {% comment %} {% if user == post.author %} {% endcomment %}
+            {% if flag %}
+            {% comment %} {% if user == post.author %} {% endcomment %}
+                <form action="/blog/edit/" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="slug" value="{{post.slug}}">
+                    <input type="hidden" name="content" value="{{post.content}}">
+                    <input type="hidden" name="title" value="{{post.title}}">
+                    <button type="submit">Edit</button>
+                </form>
+                {% comment %} {% endif %} {% endcomment %}
+                
+                <form action="/blog/delete/" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="slug" value="{{post.slug}}">
+                    <input type="hidden" name="content" value="{{post.content}}">
+                    <input type="hidden" name="title" value="{{post.title}}">
+                    <button type="submit">Delete</button>
+                </form>
+                
+            {% endif %}
             <br>
         </div>
 
