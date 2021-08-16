@@ -38,8 +38,6 @@ def write(request):
         messages.success(request, "Blog posted successfully.")
         return redirect("BlogHome")
     else:
-        # posts=Post.objects.all()
-        # if len()
         return render(request, 'writeblog.html')
 
 
