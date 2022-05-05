@@ -1,32 +1,29 @@
+
+
 {% extends 'base.html' %}
 {% block title %}Login{% endblock title %}
 {% block style %}
-<link rel="stylesheet" href="../static/assets/css/style1.css">
+<link rel="stylesheet" href="../static/assets/css/style.css">
 {% endblock style %}
 {% block body %}
-
+<div style="background: #f2f1f7 ;width: 100%; height: 100vh;background-size: cover;">
  <main id="main" >
  <section id="about" class="about">
-  
-      <div class="contentbx" data-aos="fade-up">
-        <div class="formbx">
-          <h2>Log In</h2><br>
-          <div class="inputbx">
-          <p>Please Enter Your Credential To log in </p></div>
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Log In</h2>
+          <p>Please Enter Your Credential To log in </p>
           <form method="post" action="/login/">{% csrf_token %}
-                    <input class="inputbx" type="text" name="username" placeholder="Username"><br>
-                    <input class="inputbx" type="password" name="password" placeholder="Password"><br>
-                    <div class="inputbx">
-                      <input type="submit" value="Login">
-                    </div>
-                    <a class="remember" href="/change_user/">Forgot Username</a>
-                    <a class="remember" href="/change_pass/">| Forgot Password</a>
-                    <div class="inputbx"><p>Don't have account Create one <a href="/signup">Signin</a></p> </div>
-          </form>
+                    <input class="my-3" type="text" name="username" placeholder="Username"><br>
+                    <input class="my-1" type="password" name="password" placeholder="Password"><br>
+                    <button class="my-2" type="submit" style="background-color: rgb(91, 91, 105); color: white;">Login</button><br>
+                    <a href="/change_user/">Forgot Username</a>
+                    <a href="/change_pass/">| Forgot Password</a>
+                </form>
+              
         </div>  
       </div>
  </section>
  </main>
 </div>
 {% endblock body %}
-
