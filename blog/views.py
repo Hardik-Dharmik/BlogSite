@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -30,7 +31,6 @@ def write(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         slug = str(random.randint(100, 1000000))
-        print("Slug inside write:",slug)
         content = request.POST.get('content')
         author = request.user.username
         post = Post(author=author, title=title, slug=slug, content=content)
@@ -83,7 +83,6 @@ def editblog(request):
         content = request.POST.get('content')
         author = request.user.username
         slug=request.POST.get('slug')
-        print("SLug inside editblog:",slug)
         post=Post.objects.filter(slug=slug)[0]
         post.content=content
         post.save()

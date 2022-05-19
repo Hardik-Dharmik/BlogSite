@@ -25,11 +25,11 @@ SECRET_KEY = 'django-insecure-^#2x8ur&9m(5j*(4r_4x+!0(8zvsuaf)ldf-jiu)cvuwnhris#
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-# DEBUG = False
+#DEBUG = False
 
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+#ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 ALLOWED_HOSTS = []
-# ALLOWED_HOST=['https://blogsitehmpro1.herokuapp.com','localhost','127.0.0.1']
+#ALLOWED_HOST=['https://blogsitehmpro1.herokuapp.com','localhost','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'BlogSite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
     }
 }
 
