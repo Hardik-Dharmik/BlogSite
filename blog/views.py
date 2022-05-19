@@ -31,7 +31,6 @@ def write(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         slug = str(random.randint(100, 1000000))
-        print("Slug inside write:",slug)
         content = request.POST.get('content')
         author = request.user.username
         post = Post(author=author, title=title, slug=slug, content=content)
@@ -46,7 +45,7 @@ def viewblog(request, slug):
     flag=True
     post = Post.objects.filter(slug=slug).first()
     comments=Comments.objects.filter(post=post)
-    if  post.author!=str(request.user):
+    if  post.author != str(request.user.username):
         flag=False
     return render(request, 'blogpost.html', {'post': post,'comments':comments,'flag':flag})
 
@@ -84,7 +83,6 @@ def editblog(request):
         content = request.POST.get('content')
         author = request.user.username
         slug=request.POST.get('slug')
-        print("SLug inside editblog:",slug)
         post=Post.objects.filter(slug=slug)[0]
         post.content=content
         post.save()

@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'BlogSite.wsgi.application'
+WSGI_APPLICATION = 'BlogSite.wsgi.application'
 
 
 # Database
@@ -138,4 +138,4 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR,'assets/')
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

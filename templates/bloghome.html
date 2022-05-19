@@ -7,63 +7,63 @@
 
 {% endblock style %}
 {% block body %}
-<div style="background: linear-gradient(225deg,#f17ba2,#aadcf3);">
-<div style="background: linear-gradient(225deg,#f17ba2,#aadcf3); background-size: cover;width: 100%;height: 100%;">
-    <main id="main" data-aos="fade-up">
-        
-        <section>
-            <div class="row">
-                <div class="section-title">
-                    <h2 style="color:whitesmoke;">Blogs</h2>
+<div style="background: linear-gradient(225deg,#e91e63,#03a9f4); overflow:hidden">
+    <div style="background: linear-gradient(225deg,#e91e63,#03a9f4); background-size: cover;width: 100%;height: 100%;">
+        <main id="main" data-aos="fade-up">
+
+            <section>
+                <div class="row">
+                    <div class="section-title">
+                        <h2 style="color:whitesmoke;">Blogs</h2>
                     </div>
-            <form action="/blog/" method="post" style="text-align:right;margin-right: 1%;">{% csrf_token %}
-                <input type="text " placeholder="Search blogs" name="search" id="name" style="text-align:center;border-radius: 30px;
-                            padding: 5px 20px; outline: none;border: 1px solid #607d8b;">
-                <button type="submit" class="btn btn-primary" style="margin-right: 1%;">
-                    <i class="fas fa-search"></i>
-                  </button>
-            </form>
-            </div>
-
-            {% if user.is_authenticated %}
-            <div class="container"> <a href="/blog/showmyblog/">Show my blogs</a></div>
-            {% endif %}
-
-            <div class="container">
-                <a href="/blog/writeblog/">Write your own blog</a>
-            <h2>Popular Blogs</h2>
-            <h3>{{num_posts}} results</h3>
-            </div>
-            {% for post in posts %}
-            <div class="blog-card">
-                <div class="meta">
-                    <div class="photo" style="background-image: url(https://source.unsplash.com/laptop);"></div>
-                    <ul class="details">
-                        <li class="author"><a href="#">{{post.author}}</a> </li>
-                        <li class="data">{{post.timestamp}}</li>
-                        <li class="tag">
-                            <ul>
-                                <li><a href="#">Learn</a></li>
-                                <li><a href="#">Learn</a></li>
-                                <li><a href="#">Learn</a></li>
-                            </ul>
-                            </li>
-                    </ul>   
+                    <form action="/blog/" method="post" style="text-align:right;margin-right: 1%;">{% csrf_token %}
+                        <input type="text " placeholder="Search blogs" name="search" id="name" style="text-align:center;border-radius: 30px;
+                            padding: 10px 70px; outline: none;border: 1px solid #607d8b;">
+                        <button type="submit" class="btn btn-primary" style="margin-right: 1%;">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                 </div>
-                <div class="description">
-                    <h1>{{post.title}}</h1>
-                    <p>{{post.content | safe}}</p>
-                    <p class="read-more">
-                        <a href="/blog/{{post.slug}}">Read more</a>
-                    </p>
+
+                {% if user.is_authenticated %}
+                <div class="container" style="color:white"> <a href="/blog/showmyblog/"><h1>Show my blogs</h1></a></div>
+                {% endif %}
+
+                <div class="container">
+                    <a href="/blog/writeblog/"><h1>Write your own blog</h1></a>
+                    <h4>Popular Blogs ({{num_posts}} results)</h4>
                 </div>
-            </div>    
-            <br>
                 
-            {% endfor %}
-        </section>
-    </main>
-</div>
+                {% for post in posts %}
+                <div class="blog-card">
+                    <div class="meta">
+                        <div class="photo" style="background-image: url(https://source.unsplash.com/laptop);"></div>
+                        <ul class="details">
+                            <li class="author"><a href="#">{{post.author}}</a> </li>
+                            <li class="data">{{post.timestamp}}</li>
+                            <li class="tag">
+                                <ul>
+                                    <li><a href="#">Learn</a></li>
+                                    <li><a href="#">Learn</a></li>
+                                    <li><a href="#">Learn</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="description">
+                        <h1>{{post.title}}</h1>
+                        <p>{{post.content | safe | truncatechars:20}}</p>
+                        <p class="read-more">
+                            <a href="/blog/{{post.slug}}">Read more</a>
+                        </p>
+                    </div>
+                </div>
+                <br>
+
+                {% endfor %}
+            </section>
+        </main>
+    </div>
 </div>
 
 {% endblock body %}
