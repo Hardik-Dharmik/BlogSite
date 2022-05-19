@@ -29,7 +29,7 @@
   <!--Main CSS File-->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  
+  {% comment %} <link href='assets/css/style.css' rel="stylesheet"> {% endcomment %}
 {% block style %}
   
 {% endblock style %}
@@ -88,7 +88,7 @@
 
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" style="">
+  <footer id="footer" style="margin-top: auto;">
     <div class="container">
       <div class="credits">
         Created by <a>Mayur and Hardik</a>

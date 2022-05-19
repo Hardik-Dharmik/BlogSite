@@ -45,7 +45,7 @@ def viewblog(request, slug):
     flag=True
     post = Post.objects.filter(slug=slug).first()
     comments=Comments.objects.filter(post=post)
-    if  post.author!=str(request.user):
+    if  post.author != str(request.user.username):
         flag=False
     return render(request, 'blogpost.html', {'post': post,'comments':comments,'flag':flag})
 
