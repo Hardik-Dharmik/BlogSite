@@ -1,52 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block title %}Blog Home{% endblock title %} {% block body %}
-{% comment %} <main id="main" data-aos="fade-up">
-    <section>
-        <div class="container2">
-            <h2>{{post.title}}</h2>
-            <h3>{{post.author}}</h3>
-            <h3>{{post.timestamp}}</h3>
-            <p>{{post.content | safe}}</p>
-            {% if flag %}
-            <form action="/blog/edit/" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="slug" value="{{post.slug}}" />
-                <input type="hidden" name="content" value="{{post.content}}" />
-                <input type="hidden" name="title" value="{{post.title}}" />
-                <button type="submit">Edit</button>
-            </form>
 
-            <form action="/blog/delete/" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="slug" value="{{post.slug}}" />
-                <input type="hidden" name="content" value="{{post.content}}" />
-                <input type="hidden" name="title" value="{{post.title}}" />
-                <button type="submit">Delete</button>
-            </form>
-
-            {% endif %}
-            <br />
-        </div>
-
-        {% if user.is_authenticated %}
-        <form action="/blog/write_comment/" method="post">
-            {% csrf_token %}
-            <input type="text" placeholder="Enter Comment here" name="content" />
-            <input type="hidden" name="post_id" value="{{post.post_id}}" />
-            <button onclick="op()">Comment</button>
-        </form>
-        {% endif %}
-
-        <div class="container">
-            {% for comment in comments %}
-            <div class="container">
-                <strong>{{comment.author}}</strong>
-                <h6>{{comment.timestamp}}</h6>
-                <h5>{{comment.content}}</h5>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-</main> {% endcomment %}
 
 <div style="height:100%">
     <div style="background-size: cover;width: 100%;height: 100%;">
@@ -113,55 +66,42 @@
 
                 <div class="container">
                     {% if user.is_authenticated %}
-    <form action="/blog/write_comment/" method="post">
-        {% csrf_token %}
-        <input type="text" placeholder="Enter Comment here" name="content" />
-        <input type="hidden" name="post_id" value="{{post.post_id}}" />
-        <button onclick="op()">Comment</button>
-    </form>
-    {% endif %}
+                    <form action="/blog/write_comment/" method="post">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Enter Comment here" name="content" />
+                        <input type="hidden" name="post_id" value="{{post.post_id}}" />
+                        <button onclick="op()" style="font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 40px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin-top: 30px;
+    color: #fff;
+    background: #34b7a7;
+    border:none;
+        ">Comment</button>
+                    </form>
+                    {% endif %}
 
-    <div class="container">
-        {% for comment in comments %}
-        <div class="container">
-            <strong>{{comment.author}}</strong>
-            <h6>{{comment.timestamp}}</h6>
-            <h5>{{comment.content}}</h5>
-        </div>
-        {% endfor %}
+                    <div class="container ">
+                        <br><br>
+                        <h4>Comments</h4>
+                        {% for comment in comments %}
+                        <div class="container my-3">
+                            <strong>{{comment.author}}</strong>
+                            <h6>{{comment.timestamp}}</h6>
+                            <h5>{{comment.content}}</h5>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
+
+
     </div>
 
-    
-    </div>
 
-    {% comment %} {% for post in posts %}
-    <div class="blog-card">
-        <div class="meta">
-            <div class="photo" style="background-image: url(https://source.unsplash.com/laptop);"></div>
-            <ul class="details">
-                <li class="author"><a href="#">{{post.author}}</a> </li>
-                <li class="data">{{post.timestamp}}</li>
-                <li class="tag">
-                    <ul>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Learn</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="description">
-            <h1>{{post.title}}</h1>
-            <p>{{post.content | safe | truncatechars:20}}</p>
-            <p class="read-more">
-                <a href="/blog/{{post.slug}}">Read more</a>
-            </p>
-        </div>
-    </div>
-    <br>
-
-    {% endfor %} {% endcomment %}
     </section>
     </main>
 </div>
