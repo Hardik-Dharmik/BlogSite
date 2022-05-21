@@ -22,7 +22,7 @@ def index(request):
         context = {'posts': posts, 'num_posts': len(posts)}
         return render(request, 'bloghome.html', context)
 
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-timestamp')
     context = {'posts': posts, 'num_posts': len(posts)}
     return render(request, 'bloghome.html', context)
 

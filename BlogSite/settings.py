@@ -24,12 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^#2x8ur&9m(5j*(4r_4x+!0(8zvsuaf)ldf-jiu)cvuwnhris#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOST=['https://blogsitehmpro1.herokuapp.com','localhost','127.0.0.1']
+#Uncomment while running locally
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+# Uncomment for deployment
+# ALLOWED_HOST=['https://blogsitehmpro1.herokuapp.com','localhost','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
@@ -139,4 +141,4 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR,'assets/')
 
 # Uncomment for deployment
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
