@@ -52,8 +52,9 @@ def viewblog(request, slug):
 
 def showmyblog(request):
     myPosts = Post.objects.filter(author=request.user.username)
-    context = {'posts': myPosts, 'num_post': len(myPosts)}
-    return render(request, 'bloghome.html', context)
+    context = {'posts': myPosts, 'num_posts': len(myPosts)}
+    print(context)
+    return render(request, 'myblogs.html', context)
 
 def write_comment(request):
     if request.method=='POST':
