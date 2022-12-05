@@ -28,7 +28,7 @@ DEBUG = True
 # DEBUG = False
 
 #Uncomment while running locally
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Uncomment for deployment
 # ALLOWED_HOST=['https://blogsitehmpro1.herokuapp.com','localhost','127.0.0.1']
